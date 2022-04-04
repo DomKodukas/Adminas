@@ -1,8 +1,9 @@
 @extends('students.layout')
-@section('content')
+@section('content')   
+<x-app-layout>
+<x-slot name="header">
     <div class="container">
         <div class="row">
- 
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
@@ -22,7 +23,7 @@
                                         <th>Vardas</th>
                                         <th>Adresas</th>
                                         <th>Telefonas</th>
-                                        <th>Eiliskumas</th>
+                                        <th>Valdymas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,7 +35,9 @@
                                         <td>{{ $item->mobile }}</td>
  
                                         <td>
-                                            <a href="{{ url('/student/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Perziureti</button></a>
+                                            <a href="{{ url('/student/' . $item->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> 
+                                            Perziureti</button></a>
+                                            @if(Auth::user()->isAdmin())
                                             <a href="{{ url('/student/' . $item->id . '/edit') }}" title="Edit Student"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Koreguoti</button></a>
  
                                             <form method="POST" action="{{ url('/student' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
@@ -42,6 +45,7 @@
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Student" onclick="return confirm(&quot;Ar tikriai norite istrinti?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Trinti</button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -54,4 +58,6 @@
             </div>
         </div>
     </div>
+    </x-slot>
+</x-app-layout> 
 @endsection
