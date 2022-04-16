@@ -13,6 +13,9 @@
                         <a href="{{ url('/student/create') }}" class="btn btn-success btn-sm" title="Add New Student">
                             <i class="fa fa-plus" aria-hidden="true"></i> Registruotis
                         </a>
+                        <a href="{{ url('/multiuploads') }}" class="btn btn-success btn-sm" title="Ikelti faila">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Ikelti faila
+                        </a>
                         <br/>
                         <br/>
                         <div class="table-responsive">

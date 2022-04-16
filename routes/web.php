@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +26,8 @@ Route::get('/dashboard', function () {
 
 Route::resource('/student', StudentController::class)->middleware(['auth']);
 Route::get('send',[HomeController::class,"sendnotification"]);
+
+Route::get('/multiuploads', [UploadController::class,'uploadForm']);
+Route::post('/multiuploads', [UploadController::class,'uploadSubmit']);
 
 require __DIR__.'/auth.php';
